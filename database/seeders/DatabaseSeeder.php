@@ -17,10 +17,23 @@ class DatabaseSeeder extends Seeder
     {
       DB::table('users')->insert([
         'name' => 'admin',
-        'email' => 'admin@admin.com',
+        'email' => 'admin@gmail.com',
         'password' => Hash::make('admin'),
         'rol' => 'admin'
       ]);
+			DB::table('users')->insert([
+        'name' => 'jose',
+        'email' => 'jose@gmail.com',
+        'password' => Hash::make('jose'),
+        'rol' => 'comprador'
+      ]);
+			DB::table('users')->insert([
+        'name' => 'admin',
+        'email' => 'admin@admin.com',
+        'password' => Hash::make('admin'),
+        'rol' => 'comprador'
+      ]);
+
 
         $this->call(CochesSeeder::class);
     }

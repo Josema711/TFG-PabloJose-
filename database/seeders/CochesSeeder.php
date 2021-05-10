@@ -20,6 +20,7 @@ class CochesSeeder extends Seeder
        'cv'=>'390 CV',
        'color'=>'Azul intenso',
        'precio'=>'80.000€',
+       'tipo'=>'Coupe',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'M8',
@@ -27,6 +28,7 @@ class CochesSeeder extends Seeder
         'cv'=>'600 CV',
         'color'=>'Negro mate',
         'precio'=>'190.000€',
+        'tipo'=>'Coupe',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'Urus',
@@ -34,6 +36,7 @@ class CochesSeeder extends Seeder
         'cv'=>'485 CV',
         'color'=>'Amarillo',
         'precio'=>'280.000€',
+        'tipo'=>'SUV',
             ]);
     }
 }
