@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\coches;
 use App\Http\Controllers\CochesController;
+use Illuminate\Support\Facades\Auth;
 
 class CochesController extends Controller
 {
@@ -20,19 +21,20 @@ class CochesController extends Controller
             return view('menuComprador');
             break;
         default:
-           salida();
+           salida($request);
            break;
       //De prueba para ver si funciona
      }
+   }
 
 //Salir de cada pagina al login
-  public function salida(){
-    Auth::logout();
+public function salida(Request $request){
+  Auth::logout();
 
-    $request->session()->invalidate();
-   $request->session()->regenerateToken();
+  $request->session()->invalidate();
+  $request->session()->regenerateToken();
 
-    return redirect('/');
-  }
+  return redirect('/');
+}
 
 }
