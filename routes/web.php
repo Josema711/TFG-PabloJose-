@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [CochesController::class, 'entrada'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/salida',[CochesController::class, 'salida']);
+Route::get('/salida',[CochesController::class, 'salida'])->name('welcome');
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
