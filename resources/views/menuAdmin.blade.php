@@ -6,7 +6,7 @@
  	 </head>
   	<body>
   	  <h1>Administrador</h1>
-   	    <form action="/salida" method="get">
+   	    <form action="/salir" method="get">
      	     <input type="submit" value="Salir">
    	    </form>
  	 </body>

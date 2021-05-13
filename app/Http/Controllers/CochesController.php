@@ -13,22 +13,18 @@ class CochesController extends Controller
 
 //Roles de prueba
   public function entrada(){
-      switch (Auth::user()->rol) {
-        case 'admin':
-           return view('menuAdmin');
-           break;
-        case 'comprador':
-            return view('menuComprador');
-            break;
-        default:
-           salida($request);
-           break;
-      //De prueba para ver si funciona
-     }
+      $user=Auth::user();
+
+      if($user->rol=='admin') {
+        return view('menuAdmin');
+      }else {
+        return view('menuComprador');
+      }
    }
 
+
 //Salir de cada pagina al login
-public function salida(Request $request){
+public function salir(Request $request){
   Auth::logout();
 
   $request->session()->invalidate();
