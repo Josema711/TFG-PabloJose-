@@ -18,11 +18,8 @@ class CreateCochesTable extends Migration
             $table->string('modelo');
             $table->string('marca');
             $table->string('cv');
-            $table->string('color');
             $table->string('precio');
 
-            // Deportivo,Coupe,Todoterreno,etc.
-            $table->string('tipo');
 
 
         });

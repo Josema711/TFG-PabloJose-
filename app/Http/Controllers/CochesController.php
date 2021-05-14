@@ -13,14 +13,18 @@ class CochesController extends Controller
 
 //Roles de prueba
   public function entrada(){
-      $user=Auth::user();
-
-      if($user->rol=='admin') {
-        return view('menuAdmin');
-      }else {
-        return view('menuComprador');
-      }
+      switch (Auth::user()->rol) {
+        case 'admin':
+          return view('menuAdmin');
+          break;
+        case 'comprador':
+          return view('menuComprador');
+          break;
+        default:
+          salir($request);
+        break;
    }
+ }
 
 
 //Salir de cada pagina al login
@@ -31,6 +35,67 @@ public function salir(Request $request){
   $request->session()->regenerateToken();
 
   return redirect('/');
+}
+
+public function insertaCoche(Request $datos){
+  $coche = new Coches;
+
+  $coche->marca=$datos->marca;
+  $coche->modelo=$datos->modelo;
+  $coche->cv=$datos->cv;
+  $coche->precio=$datos->precio;
+
+  $coche->save();
+
+return redirect('/dashboard');
+}
+
+public function listado(){
+
+  $todosCoches = Coches::all();
+
+  return view("menuAdmin",['coches' => $todosCoches]);
+
+}
+
+public function borrarCoche($id){
+
+  $coche = Coches::find($id);
+
+
+  if ($coche != null) {
+    $coche->delete();
+    $todosCoches = Coches::all();
+}else{
+  $todosCoches = Coches::all();
+}
+
+    return redirect('/dashboard');
+
+}
+
+public function listadoCoches($id){
+
+    $coche = Coches::find($id);
+
+  return view("modificaCoches",['coches' => $coche]);
+}
+
+public function modificaCoche(Request $datos,$id){
+
+  $coche = Coches::find($id);
+
+  $coche->marca=$datos->marca;
+  $coche->modelo=$datos->modelo;
+  $coche->cv=$datos->cv;
+  $coche->precio=$datos->precio;
+
+  $coche->save();
+
+  $todosCoches = Coches::all();
+
+  return redirect('/dashboard');
+
 }
 
 }
