@@ -14,13 +14,20 @@ use App\Http\Controllers\CochesController;
 |
 */
 
+
+                            //Rutas para paginas sueltas
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/inserta', function() {
     return view('IntroducirCoche');
 });
+Route::get('/VistaVentas', function () {
+    return view('ventas');
+});
 
+
+                          //Rutas para paginas vinculadas con metodos
 Route::get('/dashboard', [CochesController::class, 'entrada'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/salir',[CochesController::class, 'salir'])->middleware(['auth'])->name('dashboard');
@@ -32,7 +39,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Ruta para listar todos los coches
-Route::get('/dashboard',[CochesController::class,'listado']);
+// Route::get('/dashboard',[CochesController::class,'listado']);
 
 //Ruta para insdertar un dato en la base de datos
 Route::get('/insertaCoche',[CochesController::class,'insertaCoche']);

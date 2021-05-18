@@ -15,10 +15,12 @@ class CochesController extends Controller
   public function entrada(){
       switch (Auth::user()->rol) {
         case 'admin':
-          return view('menuAdmin');
+        $todosCoches = Coches::all();
+          return view('menuAdmin',['coches' => $todosCoches]);
           break;
         case 'comprador':
           return view('menuComprador');
+          //Alomejor hay que meter lo de todos los coches $todosCoches = Coches::all(); para mostrar un listado de todos los coches
           break;
         default:
           salir($request);
