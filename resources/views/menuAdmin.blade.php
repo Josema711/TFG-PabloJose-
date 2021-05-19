@@ -62,20 +62,60 @@
 	      </div>
 	    </div>
 	  </div>
-	  <div class="navbar shadow-sm" style="background-color: #B6B6B6;">
+	  <div class="navbar shadow-sm" style="background-color: #000000;">
 	    <div class="container">
 	      <a href="#" class="navbar-brand d-flex align-items-center">
-					<strong style="font-family: 'Noto Sans', sans-serif; font-family: 'Reggae One', cursive; color: #000000;">KEUKEGEN</strong>
+					<strong style="font-family: 'Noto Sans', sans-serif; font-family: 'Reggae One', cursive; color: #ffffff;">KEUKEGEN</strong>
 	      </a>
 	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 	        <!-- <span class="navbar-toggler-icon"  style="color: #000000;"></span> -->
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-  					<path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
-						</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=#ffffff class="bi bi-envelope" viewBox="0 0 16 16">
+  					<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+					</svg>
 	      </button>
 	    </div>
 	  </div>
 	</header>
+<!-- {{asset('img/slide_1.jpg')}} -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{asset('img/slide_1.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('img/slide_2.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{asset('img/slide_3.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+		<div class="carousel-item">
+      <img src="{{asset('img/slide_4.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+		<div class="carousel-item">
+      <img src="{{asset('img/slide_5.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+		<div class="carousel-item">
+      <img src="{{asset('img/slide_6.jpg')}}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 	<div class="album py-5 bg-light">
     <div class="container">
