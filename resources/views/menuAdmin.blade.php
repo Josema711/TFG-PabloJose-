@@ -168,10 +168,17 @@
 	</div>
 
 
-
    	    <form action="/salir" method="get">
      	     <input class="btn btn-outline-danger btn-xs" type="submit" value="Cerrar Sesion">
    	    </form>
+
+				<footer class="bg-light text-center text-lg-start">
+				  <!-- Copyright hay que crear el nuestro con lo de CommonRights-->
+				  <div class="text-center p-3" style="background-color: #000000;">
+				   <p class="text-light">© 2020 Copyright: <a class="text-light" href="#"> KEUKEGEN.com</a></p>
+				  </div>
+				</footer>
+
 
 	<script src="js/jquery.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
