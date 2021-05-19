@@ -55,8 +55,8 @@
 	        <div class="col-sm-4 offset-md-1 py-4">
 	          <h4 class="text-white">Contact</h4>
 	          <ul class="list-unstyled">
-	            <li><a class="text-white">Pablo Ruiz Ballesteros</a></li>
-	            <li><a class="text-white">Jose Manuel Huertas</a></li>
+	            <li><a class="text-white" href="https://www.instagram.com/pablorb12/" target="_blank" >Pablo Ruiz Ballesteros</a></li>
+	            <li><a class="text-white" href="https://www.instagram.com/josema711/" target="_blank" >Jose Manuel Huertas</a></li>
 	          </ul>
 	        </div>
 	      </div>
