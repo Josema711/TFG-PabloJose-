@@ -19,6 +19,7 @@ class CreateCochesTable extends Migration
             $table->string('marca');
             $table->string('cv');
             $table->string('precio');
+            $table->string('tipo');
 
 
 

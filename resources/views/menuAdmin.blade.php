@@ -7,9 +7,7 @@
 	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Reggae+One&display=swap" rel="stylesheet">
 
 
-			<link href="css/bootstrap.min.css" rel="stylesheet">
-			<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="css/theme.css" rel="stylesheet">
+			<link href="/css/bootstrap.min.css" rel="stylesheet">
 
 				</head>
 			  	<body>
@@ -64,7 +62,7 @@
 	  </div>
 	  <div class="navbar shadow-sm" style="background-color: #000000;">
 	    <div class="container">
-	      <a href="#" class="navbar-brand d-flex align-items-center">
+	      <a href="/dashboard" class="navbar-brand d-flex align-items-center">
 					<strong style="font-family: 'Noto Sans', sans-serif; font-family: 'Reggae One', cursive; color: #ffffff;">KEUKEGEN</strong>
 	      </a>
 	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +115,18 @@
   </button>
 </div>
 
-	<div class="album py-5 bg-light">
+
+<div class="container">
+	<div class="menu">
+		<div class="d-grid mt-3 gap-4 d-md-block text-center">
+  		<a class="btn btn-dark" href="{{ url('/inserta') }}" role="button">Añadir Subasta</a>
+  		<button class="btn btn-dark" type="button">Button</button>
+		</div>
+	</div>
+</div>
+
+
+	<div class="album pt-3 pb-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -129,30 +138,34 @@
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
 																							preserveAspectRatio="xMidYMid slice" focusable="false">
 										<title>Placeholder</title>
-										<rect width="100%" height="100%" fill="#128be6"/>
+										<rect width="100%" height="100%" fill="#000000"/>
 										<text x="50%" y="50%" fill="#eceeef" dy=".3em">Coches</text>
 						</svg>
 
-            <div class="card-body">
+    			<div class="card-body">
+						<h5 class="card-title">{{ $coche->marca }} {{ $coche->modelo }}</h5>
               <p class="card-text">
 								<tbody>
 							    <ul>
-							      <li>Marca: {{ $coche->marca }}</li>
-							      <li>Modelo: {{ $coche->modelo }}</li>
-							      <li>Precio: {{ $coche->precio }}</li>
-										<li>Potencia: {{ $coche->cv }}</li>
+							      <li>Precio: {{ $coche->precio }} €</li>
+										<li>Potencia: {{ $coche->cv }} CV</li>
+										<li>Tipo: {{ $coche->tipo }}</li>
 							    </ul>
 							  </tbody>
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-									<form action="/listadoCoches/{{ $coche->id }}" method="get">
-		 							 <input type="submit" value="Edit">
-		 						 </form>
+											<form action="/listadoCoches/{{ $coche->id }}" method="get">
+				 							 	<input type="submit" value="Edit">
+				 						 	</form>
 								 <br>
-								 <form action="/borrarCoche/{{ $coche->id }}" method="get">
-	 							 <input type="submit" value="Borrar">
-	 						 </form>
+											 <form action="/borrarCoche/{{ $coche->id }}" method="get">
+				 							 	<input type="submit" value="Borrar">
+				 						 	</form>
+									<br>
+		 										<form action="/verCoche/{{ $coche->id }}" method="get">
+		 				 							<input type="submit" value="Ver">
+		 				 						</form>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
@@ -180,9 +193,9 @@
 				</footer>
 
 
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/docs.min.js" type="text/javascript"></script>
+				<script src="/js/jquery-3.5.1.min.js" type="text/javascript"></script>
+			  <script src="/js/popper.min.js" type="text/javascript"></script>
+				<script src="/js/bootstrap.min.js" type="text/javascript"></script>
 
   </body>
 </html>

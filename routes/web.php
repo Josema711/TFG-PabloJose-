@@ -50,3 +50,6 @@ Route::get('/borrarCoche/{id}',[CochesController::class,'borrarCoche']);
 //Ruta para modificar un registro
 Route::get('/listadoCoches/{id}',[CochesController::class,'listadoCoches']);
 Route::get('/modificaCoche/{id}',[CochesController::class,'modificaCoche']);
+
+//Ruta para ver un coche en detalle tanto el admin como los compradores
+Route::get('/verCoche/{id}',[CochesController::class,'verCoche']);

@@ -46,6 +46,7 @@ public function insertaCoche(Request $datos){
   $coche->modelo=$datos->modelo;
   $coche->cv=$datos->cv;
   $coche->precio=$datos->precio;
+  $coche->tipo=$datos->tipo;
 
   $coche->save();
 
@@ -83,6 +84,15 @@ public function listadoCoches($id){
   return view("modificaCoches",['coches' => $coche]);
 }
 
+
+//Funcion ver para ver detalles de los coches
+public function verCoche($id){
+
+    $coche = Coches::find($id);
+
+  return view("vistaCoche",['coches' => $coche]);
+}
+
 public function modificaCoche(Request $datos,$id){
 
   $coche = Coches::find($id);
@@ -91,6 +101,7 @@ public function modificaCoche(Request $datos,$id){
   $coche->modelo=$datos->modelo;
   $coche->cv=$datos->cv;
   $coche->precio=$datos->precio;
+  $coche->tipo=$datos->tipo;
 
   $coche->save();
 

@@ -17,20 +17,23 @@ class CochesSeeder extends Seeder
           DB::table('coches')->insert([
        'modelo'=> 'M2',
        'marca'=> 'BMW',
-       'cv'=>'390 CV',
-       'precio'=>'80.000€',
+       'cv'=>'390',
+       'precio'=>'80.000',
+       'tipo'=>'Coupe',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'M8',
         'marca'=> 'BMW',
-        'cv'=>'600 CV',
-        'precio'=>'190.000€',
+        'cv'=>'600',
+        'precio'=>'190.000',
+        'tipo'=>'Deportivo',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'Urus',
         'marca'=> 'Lamborghini',
-        'cv'=>'485 CV',
-        'precio'=>'280.000€',
+        'cv'=>'485',
+        'precio'=>'280.000',
+        'tipo'=>'SUV',
             ]);
     }
 }

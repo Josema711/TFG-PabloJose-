@@ -48,7 +48,7 @@
 	      <div class="row">
 	        <div class="col-sm-8 col-md-7 py-4">
 	          <h4 class="text-white">About us</h4>
-	          <p class="text-muted">Somos una empresa muy ambiciosa y exclusiva solo apta para aquellos que habeis sido seleccionados y aprobados por el ADMIN, aqui podras encontrar subastas de los coches mas lujosos del mundo. No te cortes y compra.</p>
+	          <p class="text-muted">Somos una empresa muy abiciosa y exclusiva solo apta para aquellos que habeis sido seleccionados y aprobados por el ADMIN, aqui podras encontrar subastas de los coches mas lujosos del mundo. No te cortes y compra.</p>
 	        </div>
 	        <div class="col-sm-4 offset-md-1 py-4">
 	          <h4 class="text-white">Contact</h4>
@@ -62,7 +62,7 @@
 	  </div>
 	  <div class="navbar shadow-sm" style="background-color: #000000;">
 	    <div class="container">
-	      <a href="/dasboard" class="navbar-brand d-flex align-items-center">
+	      <a href="/dashboard" class="navbar-brand d-flex align-items-center">
 					<strong style="font-family: 'Noto Sans', sans-serif; font-family: 'Reggae One', cursive; color: #ffffff;">KEUKEGEN</strong>
 	      </a>
 	      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,67 +74,21 @@
 	    </div>
 	  </div>
 	</header>
-
-	<div class="container" style="padding-top:15%; padding-bottom:10%; padding-left:15%; padding-right:15%;">
-
-<div class="border border-start"  style="padding:2em; border-radius:25px; background:#b4b4b4; box-shadow:-8px -8px 16px #b3a3a3, 8px 8px 16px #000000;">
-
-    <h3>Insertar coche nuevo:</h3>
-
-      <form action="/modificaCoche/{{ $coches->id }}" method="get">
-
-			        <div class="row">
-
-								<div class="col-md-6">
-									<label class="form-label">Marca</label>
-				          <input type="text" class="form-control" name="marca" value="{{ $coches->marca}}">
-								</div>
-								<div class="col-md-6">
-									<label class="form-label">Modelo</label>
-				          <input type="text" class="form-control" name="modelo" value="{{ $coches->modelo}}">
-								</div>
-
-			        </div>
-
-
-							<div class="row">
-
-								<div class="col-md-3 col-sm-3 col-xs-3">
-									<label class="form-label">Precio</label>
-				          <input type="text" class="form-control" name="precio" placeholder="€" value="{{ $coches->precio}}">
-								</div>
-								<div class="col-md-3 col-sm-3 col-xs-3">
-									<label class="form-label">CV</label>
-				          <input type="text" class="form-control" name="cv" value="{{ $coches->cv}}">
-								</div>
-								<div class="col">
-									<label class="form-label">Tipo de Coche:</label>
-			              <select name="tipo" id="tipo" class="form-select" aria-label="Tipo de Coche">
-			                    <option value="{{ $coches->tipo}}" selected>{{ $coches->tipo}}</option>
-			                      <option name="Deportivo" value="Deportivo">Deportivo</option>
-			                      <option name="SUV" value="SUV">SUV</option>
-			                      <option name="Coupe" value="Coupe">Coupe</option>
-			                      <option name="Americano" value="Americano">Americano</option>
-			                      <option name="Clasico" value="Clasico">Clasico</option>
-			              </select>
-								</div>
-
-							</div>
-							<div class="row mt-4">
-				          <button type="submit" class="btn btn-danger" value="Introducir">Editar</button>
-				      </div>
-
-    </form>
-
+<div class="row" style="margin-top:10%; margin-bottom:20%; margin-right:10%; margin-left:10%;">
+	<div class="imagen col-7 align-self-center">
+		<img src="{{asset('img/slide_1.jpg')}}" style="width:70%;" class="img-thumbnail" alt="{{ $coches->marca }} {{ $coches->modelo }}">
 	</div>
+	<div class="text col-5 align-self-center">
+		<h5>{{ $coches->marca }} {{ $coches->modelo }}</h5>
+			<p>Se trata de un <b>{{ $coches->tipo }}</b> ni mas ni menos, con un precio inicial de <b>{{ $coches->precio }} €</b>
+			 tiene una potencia de <b>{{ $coches->cv }}</b> caballos, un autentico cochazo. No te lo pierdas, puja y que gane el que mas dinero tenga.</p>
+	</div>
+</div>
 
-  </div>
+<script src="/js/jquery-3.5.1.min.js" type="text/javascript"></script>
+<script src="/js/popper.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap.min.js" type="text/javascript"></script>
 
 
-  <script src="/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-  <script src="/js/popper.min.js" type="text/javascript"></script>
-  <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-
-
-  </body>
+</body>
 </html>
