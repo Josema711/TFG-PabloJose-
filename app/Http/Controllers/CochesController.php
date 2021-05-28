@@ -16,11 +16,16 @@ class CochesController extends Controller
       switch (Auth::user()->rol) {
         case 'admin':
         $todosCoches = Coches::all();
-          return view('menuAdmin',['coches' => $todosCoches]);
+        //Pruebas en la view prueba.blade.php
+        //return view('prueba',['coches' => $todosCoches]);
+
+        //Return de verdad
+           return view('menuAdmin',['coches' => $todosCoches]);
           break;
+
         case 'comprador':
-          return view('menuComprador');
-          //Alomejor hay que meter lo de todos los coches $todosCoches = Coches::all(); para mostrar un listado de todos los coches
+        $todosCoches = Coches::all();
+          return view('menuComprador',['coches' => $todosCoches]);
           break;
         default:
           salir($request);
@@ -84,15 +89,6 @@ public function listadoCoches($id){
   return view("modificaCoches",['coches' => $coche]);
 }
 
-
-//Funcion ver para ver detalles de los coches
-public function verCoche($id){
-
-    $coche = Coches::find($id);
-
-  return view("vistaCoche",['coches' => $coche]);
-}
-
 public function modificaCoche(Request $datos,$id){
 
   $coche = Coches::find($id);
@@ -108,7 +104,33 @@ public function modificaCoche(Request $datos,$id){
   $todosCoches = Coches::all();
 
   return redirect('/dashboard');
-
 }
+
+  //Funcion ver para ver detalles de los coches
+  public function verCoche($id){
+
+      $coche = Coches::find($id);
+
+      //LLevar la variable de tiempo para colocar el temporizador
+
+    return view("vistaCoche",['coches' => $coche]);
+  }
+
+
+  public function filtrarCoche(Request $tipo){
+
+      $tipoF = $tipo->tipo;
+
+      $coche = Coches::where('tipo', $tipoF)->get();
+
+    return view("menuAdmin",['coches' => $coche]);
+  }
+
+  public function listadoF(Request $tipo){
+    
+    $todosCoches = Coches::all();
+
+    return redirect('/dashboard');
+  }
 
 }

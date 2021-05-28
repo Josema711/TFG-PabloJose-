@@ -2,7 +2,7 @@
 	<html lang="es" dir="ltr">
  	 <head>
     	<meta charset="utf-8">
-    	<title></title>
+    	<title>Keukegen</title>
 			<link rel="preconnect" href="https://fonts.gstatic.com">
 	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Reggae+One&display=swap" rel="stylesheet">
 
@@ -75,9 +75,9 @@
 	  </div>
 	</header>
 
-<div class="container">
+
   @yield('contenido')
-</div>
+
 
    	    <form action="/salir" method="get">
      	     <input class="btn btn-outline-danger btn-xs" type="submit" value="Cerrar Sesion">

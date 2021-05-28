@@ -53,3 +53,9 @@ Route::get('/modificaCoche/{id}',[CochesController::class,'modificaCoche']);
 
 //Ruta para ver un coche en detalle tanto el admin como los compradores
 Route::get('/verCoche/{id}',[CochesController::class,'verCoche']);
+
+//Ruta para el filtrado de coches
+Route::post('/filtrarCoche',[CochesController::class,'filtrarCoche']);
+
+
+Route::get('/listadoF', [CochesController::class, 'listadoF']);
