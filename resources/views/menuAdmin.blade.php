@@ -48,7 +48,7 @@
 					<p style="color:rgba(#000000, 0);" opacity>Añadir Subasta</p>
 					<div class="dropdown" role="group">
 			<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
-			Filtrar segun tipo
+			Coches en subasta
 			</button>
 			</form>
 			<ul class="dropdown-menu dropdown-menu-dark">
@@ -62,7 +62,7 @@
 				<form class="dropdown-item" action="/filtrarCoche" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Deportivo">
-					<button class="dropdown-item "type="submit" name="button">Deportivo</button>
+					<button class="dropdown-item "type="submit" name="button">Coches Deportivo</button>
 				</form>
 			</li>
 			<li>
@@ -76,21 +76,21 @@
 				<form class="dropdown-item" action="/filtrarCoche" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Coupe">
-					<button class="dropdown-item "type="submit" name="button">Coupe</button>
+					<button class="dropdown-item "type="submit" name="button">Coupes</button>
 				</form>
 			</li>
 			<li>
 				<form class="dropdown-item" action="/filtrarCoche" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Americano">
-					<button class="dropdown-item "type="submit" name="button">Americano</button>
+					<button class="dropdown-item "type="submit" name="button">Coches Americanos</button>
 				</form>
 			</li>
 			<li>
 				<form class="dropdown-item" action="/filtrarCoche" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Clasico">
-					<button class="dropdown-item "type="submit" name="button">Clasico</button>
+					<button class="dropdown-item "type="submit" name="button">Coches Clasicos</button>
 				</form>
 			</li>
 			</ul>
@@ -142,7 +142,8 @@
 		 				 							<input type="submit" value="Ver">
 		 				 						</form>
                 </div>
-                <small class="text-muted">9 mins</small>
+
+                <!-- <small class="text-muted">Aqui podemos poner si la subasta esta activa o no creadno un campo nuevo en la base de datos si nos da tiempo</small> -->
               </div>
             </div>
           </div>

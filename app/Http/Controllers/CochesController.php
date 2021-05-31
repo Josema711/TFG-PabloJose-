@@ -44,6 +44,10 @@ public function salir(Request $request){
   return redirect('/');
 }
 
+public function volver(Request $request){
+return redirect('/dashboard');
+}
+
 public function insertaCoche(Request $datos){
   $coche = new Coches;
 
@@ -52,6 +56,7 @@ public function insertaCoche(Request $datos){
   $coche->cv=$datos->cv;
   $coche->precio=$datos->precio;
   $coche->tipo=$datos->tipo;
+  $coche->tiempo=$datos->tiempo;
 
   $coche->save();
 
@@ -98,6 +103,7 @@ public function modificaCoche(Request $datos,$id){
   $coche->cv=$datos->cv;
   $coche->precio=$datos->precio;
   $coche->tipo=$datos->tipo;
+  $coche->tiempo=$datos->tiempo;
 
   $coche->save();
 
@@ -127,7 +133,7 @@ public function modificaCoche(Request $datos,$id){
   }
 
   public function listadoF(Request $tipo){
-    
+
     $todosCoches = Coches::all();
 
     return redirect('/dashboard');

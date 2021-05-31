@@ -20,6 +20,7 @@ class CreateCochesTable extends Migration
             $table->string('cv');
             $table->string('precio');
             $table->string('tipo');
+            $table->date('tiempo');
 
 
 
