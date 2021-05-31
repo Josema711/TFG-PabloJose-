@@ -62,3 +62,6 @@ Route::get('/volver', [CochesController::class, 'volver']);
 
 
 Route::get('/listadoF', [CochesController::class, 'listadoF']);
+
+//Pujas
+Route::get('/pujar/{id}',[CochesController::class,'pujar']);

@@ -21,6 +21,9 @@ class CreateCochesTable extends Migration
             $table->string('precio');
             $table->string('tipo');
             $table->date('tiempo');
+            $table->string('precioFinal')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
+
 
 
 

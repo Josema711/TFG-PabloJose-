@@ -116,10 +116,11 @@ public function modificaCoche(Request $datos,$id){
   public function verCoche($id){
 
       $coche = Coches::find($id);
+      $pujas = "";
 
       //LLevar la variable de tiempo para colocar el temporizador
 
-    return view("vistaCoche",['coches' => $coche]);
+    return view("vistaCoche",['coches' => $coche, 'puja' => $pujas]);
   }
 
 
@@ -156,5 +157,25 @@ public function modificaCoche(Request $datos,$id){
 
     return redirect('/dashboard');
   }
+
+  public function pujar(Request $puja, $id){
+
+    $coche = Coches::find($id);
+
+    $nombre = auth()->user()->name;
+		$precioInicial = $coche->precio;
+		$precioPuja = $puja->precio;
+
+    $pujas;
+
+    if ($precioPuja > $precioInicial) {
+      $pujas = "Ultima puja realizada por $nombre por una cantidad de $precioPuja €";
+      return view("vistaCoche",['coches' => $coche, 'puja' => $pujas]);
+    }else{
+      return view("vistaCoche",['coches' => $coche]);
+    }
+
+  }
+
 
 }
