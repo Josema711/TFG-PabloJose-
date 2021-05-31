@@ -123,7 +123,10 @@ public function modificaCoche(Request $datos,$id){
   }
 
 
-  public function filtrarCoche(Request $tipo){
+  //INICIO
+
+//Esta funcion hace el filtrado y me lleva directo al menu admin con la opcion de añadir subasta tambien.
+  public function filtrarCocheA(Request $tipo){
 
       $tipoF = $tipo->tipo;
 
@@ -131,6 +134,21 @@ public function modificaCoche(Request $datos,$id){
 
     return view("menuAdmin",['coches' => $coche]);
   }
+//Esta funcion me lleva a menu comprador para asi diferenciar la vista a la que me devuelve aunque sean las dos la misma funcion
+  public function filtrarCocheC(Request $tipo){
+
+      $tipoF = $tipo->tipo;
+
+      $coche = Coches::where('tipo', $tipoF)->get();
+
+    return view("menuComprador",['coches' => $coche]);
+  }
+
+
+
+  //FIN
+
+
 
   public function listadoF(Request $tipo){
 

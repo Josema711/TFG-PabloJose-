@@ -42,13 +42,60 @@
 </div>
 
 
-<div class="container">
-	<div class="menu">
-		<div class="d-grid mt-3 gap-4 d-md-block text-center">
-  		<!-- <a class="btn btn-dark" href="{{ url('/inserta') }}" role="button">Añadir Subasta</a> -->
-  		<button class="btn btn-dark" type="button">Button</button>
-		</div>
-	</div>
+<div class="container-fluid justify-content-center my-5">
+  <nav class="navbar navbar-dark bg-dark">
+  <form class="container-fluid justify-content-center">
+    <div class="dropdown" role="group">
+<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+Coches en subasta
+</button>
+</form>
+<ul class="dropdown-menu dropdown-menu-dark">
+  <li>
+    <form class="dropdown-item" action="/listadoF" method="get">
+      <input type="hidden" name="tipo" value="Todos">
+      <button class="dropdown-item "type="submit" name="button">Todos</button>
+    </form>
+  </li>
+<li>
+  <form class="dropdown-item" action="/filtrarCocheC" method="post">
+      {{csrf_field()}}
+    <input type="hidden" name="tipo" value="Deportivo">
+    <button class="dropdown-item "type="submit" name="button">Coches Deportivo</button>
+  </form>
+</li>
+<li>
+  <form class="dropdown-item" action="/filtrarCocheC" method="post">
+      {{csrf_field()}}
+    <input type="hidden" name="tipo" value="SUV">
+    <button class="dropdown-item "type="submit" name="button">SUV</button>
+  </form>
+</li>
+<li>
+  <form class="dropdown-item" action="/filtrarCocheC" method="post">
+      {{csrf_field()}}
+    <input type="hidden" name="tipo" value="Coupe">
+    <button class="dropdown-item "type="submit" name="button">Coupes</button>
+  </form>
+</li>
+<li>
+  <form class="dropdown-item" action="/filtrarCocheC" method="post">
+      {{csrf_field()}}
+    <input type="hidden" name="tipo" value="Americano">
+    <button class="dropdown-item "type="submit" name="button">Coches Americanos</button>
+  </form>
+</li>
+<li>
+  <form class="dropdown-item" action="/filtrarCocheC" method="post">
+      {{csrf_field()}}
+    <input type="hidden" name="tipo" value="Clasico">
+    <button class="dropdown-item "type="submit" name="button">Coches Clasicos</button>
+  </form>
+</li>
+</ul>
+</div>
+
+</nav>
 </div>
 
 
@@ -101,4 +148,4 @@
 
 
 
-endsection
+@endsection

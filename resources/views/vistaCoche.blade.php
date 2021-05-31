@@ -12,7 +12,7 @@
 
 
 
-<div class="row" style="text-align:center; margin-top:10%; margin-bottom:2%; margin-right:10%; margin-left:10%;">
+<div class="row" style="text-align:center; margin-top:5%; margin-bottom:2%; margin-right:10%; margin-left:10%;">
 	<h2>{{ $coches->marca }} {{ $coches->modelo }}</h2>
 </div>
 

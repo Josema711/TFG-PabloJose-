@@ -59,35 +59,35 @@
 					</form>
 				</li>
 			<li>
-				<form class="dropdown-item" action="/filtrarCoche" method="post">
+				<form class="dropdown-item" action="/filtrarCocheA" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Deportivo">
 					<button class="dropdown-item "type="submit" name="button">Coches Deportivo</button>
 				</form>
 			</li>
 			<li>
-				<form class="dropdown-item" action="/filtrarCoche" method="post">
+				<form class="dropdown-item" action="/filtrarCocheA" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="SUV">
 					<button class="dropdown-item "type="submit" name="button">SUV</button>
 				</form>
 			</li>
 			<li>
-				<form class="dropdown-item" action="/filtrarCoche" method="post">
+				<form class="dropdown-item" action="/filtrarCocheA" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Coupe">
 					<button class="dropdown-item "type="submit" name="button">Coupes</button>
 				</form>
 			</li>
 			<li>
-				<form class="dropdown-item" action="/filtrarCoche" method="post">
+				<form class="dropdown-item" action="/filtrarCocheA" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Americano">
 					<button class="dropdown-item "type="submit" name="button">Coches Americanos</button>
 				</form>
 			</li>
 			<li>
-				<form class="dropdown-item" action="/filtrarCoche" method="post">
+				<form class="dropdown-item" action="/filtrarCocheA" method="post">
 						{{csrf_field()}}
 					<input type="hidden" name="tipo" value="Clasico">
 					<button class="dropdown-item "type="submit" name="button">Coches Clasicos</button>

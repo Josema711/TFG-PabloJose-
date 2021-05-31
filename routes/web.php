@@ -55,7 +55,8 @@ Route::get('/modificaCoche/{id}',[CochesController::class,'modificaCoche']);
 Route::get('/verCoche/{id}',[CochesController::class,'verCoche']);
 
 //Ruta para el filtrado de coches
-Route::post('/filtrarCoche',[CochesController::class,'filtrarCoche']);
+Route::post('/filtrarCocheA',[CochesController::class,'filtrarCocheA']);
+Route::post('/filtrarCocheC',[CochesController::class,'filtrarCocheC']);
 
 Route::get('/volver', [CochesController::class, 'volver']);
 
