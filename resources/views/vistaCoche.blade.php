@@ -61,18 +61,25 @@
 				 	{{$res}}
 		   	</div>
  		</div>
-		<div class="container">
-			<div class="alert alert-dark" role="alert">
-					{{$puja}}
-			</div>
-		</div>
+
 		<div class="container">
 			<form class="" action="/pujar/{{ $coches->id }}" method="get">
 				<label class="form-label">Precio:</label>
-				<input type="text" class="form-control" name="precio" value="{{$coches->precio}}">
+				<input type="text" class="form-control" name="precio" value="{{$coches->precioFinal}}">
 				<button type="submit" name="button">Pujar</button>
 			</form>
 		</div>
+<br>
+		<div class="container">
+			@foreach ($apuestas as $pujas)
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>¡Nueva Puja!</strong> Realizada por <strong>{{$pujas->nombre}}</strong> con un valor de <strong>{{$pujas->cantidad}} €</strong>.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			@endforeach
+		</div>
+
+
 
 </div>
 

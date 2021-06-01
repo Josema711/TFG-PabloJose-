@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\coches;
+use App\Models\pujas;
 use App\Http\Controllers\CochesController;
 use Illuminate\Support\Facades\Auth;
 
@@ -112,18 +113,6 @@ public function modificaCoche(Request $datos,$id){
   return redirect('/dashboard');
 }
 
-  //Funcion ver para ver detalles de los coches
-  public function verCoche($id){
-
-      $coche = Coches::find($id);
-      $pujas = "";
-
-      //LLevar la variable de tiempo para colocar el temporizador
-
-    return view("vistaCoche",['coches' => $coche, 'puja' => $pujas]);
-  }
-
-
   //INICIO
 
 //Esta funcion hace el filtrado y me lleva directo al menu admin con la opcion de añadir subasta tambien.
@@ -160,22 +149,44 @@ public function modificaCoche(Request $datos,$id){
 
   public function pujar(Request $puja, $id){
 
-    $coche = Coches::find($id);
-
+    $coche = Coches::find($id); //Encuentra el coche al que se le va a pujar
+    $precioInicial = $coche->precio; // saca elprecio inicial del coche
+		$precioPuja = $puja->precio; //saca el precio que ha pujado el cliente
+    $user_id = auth()->user()->id;
     $nombre = auth()->user()->name;
-		$precioInicial = $coche->precio;
-		$precioPuja = $puja->precio;
+    $respuesta;
 
-    $pujas;
+    if ($precioPuja > $precioInicial) { //Los compara
 
-    if ($precioPuja > $precioInicial) {
-      $pujas = "Ultima puja realizada por $nombre por una cantidad de $precioPuja €";
-      return view("vistaCoche",['coches' => $coche, 'puja' => $pujas]);
+      $InsertarPuja = new Pujas;    //nueva puja en la bbdd
+      $InsertarPuja->cantidad = $puja->precio; //Lo mismo que $precioPuja = $puja->precio;
+      $InsertarPuja->user_id = $user_id; // La variable donde sacamos el user_id antes
+      $InsertarPuja->coche_id = $coche->id;
+      $InsertarPuja->nombre = $nombre; //Porque ya pasamos el $id en el formulario
+      $InsertarPuja->save();
+
+      $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
+      $coche->save();
+
+      $dinero = Pujas::where('coche_id',$id)->get();
+
+      return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero]);
+
     }else{
-      return view("vistaCoche",['coches' => $coche]);
+      //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
     }
-
   }
 
+  //Funcion ver para ver detalles de los coches
+  public function verCoche($id){
+
+      $coche = Coches::find($id);
+      $nombre = auth()->user()->name;
+      $user_id = auth()->user()->id;
+
+      $dinero = Pujas::where('coche_id',$id)->get();
+
+    return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero, 'nombre' => $nombre]);
+  }
 
 }

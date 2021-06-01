@@ -35,6 +35,9 @@ class DatabaseSeeder extends Seeder
       ]);
 
 
-        $this->call(CochesSeeder::class);
+        $this->call([
+					CochesSeeder::class,
+					CochesSeeder::class,
+				]);
     }
 }
