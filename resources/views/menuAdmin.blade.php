@@ -46,7 +46,9 @@
 			  <form class="container-fluid justify-content-center">
 					<a class="btn btn-dark btn-responsive" href="{{ url('/inserta') }}" role="button">Añadir Subasta</a>
 					<p style="color:rgba(#000000, 0);" opacity>Añadir Subasta</p>
-					<div class="dropdown" role="group">
+          <a class="btn btn-dark btn-responsive" href="{{ url('/Usuarios') }}" role="button">Usuarios</a>
+          <p style="color:rgba(#000000, 0);" opacity>Añadir Subasta</p>
+          <div class="dropdown" role="group">
 			<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
 			Coches en subasta
 			</button>

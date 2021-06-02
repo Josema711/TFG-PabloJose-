@@ -17,8 +17,8 @@ class CreatePujasTable extends Migration
             $table->id();
             $table->string('cantidad');
             $table->string('nombre');
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('coche_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('coche_id')->nullable();
         });
     }
 

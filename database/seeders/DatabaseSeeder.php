@@ -37,7 +37,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 					CochesSeeder::class,
-					CochesSeeder::class,
 				]);
     }
 }

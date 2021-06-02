@@ -65,3 +65,24 @@ Route::get('/listadoF', [CochesController::class, 'listadoF']);
 
 //Pujas
 Route::get('/pujar/{id}',[CochesController::class,'pujar']);
+
+//
+//
+//
+//
+//Usuarios
+
+Route::get('/Usuarios', [CochesController::class,'Usuarios']);
+
+Route::get('/newUser', function() {
+    return view('crearUsuario');
+});
+//Ruta para insdertar un dato en la base de datos
+Route::get('/crearUser',[CochesController::class,'crearUsuario']);
+
+//Ruta para borrar un registro de la base de datos
+Route::get('/borrarUsuario/{id}',[CochesController::class,'borrarUsuario']);
+
+//Ruta para modificar un registro
+Route::get('/listadoUsuarios/{id}',[CochesController::class,'listadoUsuarios']);
+Route::get('/modificaUsuario/{id}',[CochesController::class,'modificaUsuario']);

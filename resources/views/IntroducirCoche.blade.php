@@ -58,7 +58,7 @@
 							<div class="row">
 								<div class="col">
 									<label class="form-label">Fecha De Finalizacion:</label>
-									<input type="date" class="form-control" name="tiempo" value="tiempo"">
+									<input type="date" class="form-control" name="tiempo" value="tiempo">
 								</div>
 							</div>
 

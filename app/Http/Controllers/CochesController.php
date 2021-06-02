@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\coches;
 use App\Models\pujas;
+use App\Models\User;
 use App\Http\Controllers\CochesController;
 use Illuminate\Support\Facades\Auth;
 use SweetAlert;
@@ -68,6 +69,8 @@ alert()->success('No ha habido ningun problema', '¡Subasta Añañdida!');
 
 return redirect('/dashboard');
 }
+
+
 
 public function listado(){
 
@@ -168,30 +171,43 @@ public function modificaCoche(Request $datos,$id){
     $nombre = auth()->user()->name;
     $precioFinal = $coche->precioFinal;
 
-    if ($precioPuja > $precioFinal) { //Los compara
+    //Fechas, para la limitacion de pujas.
+    $fecha1 = date('y-m-d'); // Fecha de hoy, es lo mismo que:  date("d/m/Y")
+    $fecha2 = $coche->tiempo;
 
-      $InsertarPuja = new Pujas;    //nueva puja en la bbdd
-      $InsertarPuja->cantidad = $puja->precio; //Lo mismo que $precioPuja = $puja->precio;
-      $InsertarPuja->user_id = $user_id; // La variable donde sacamos el user_id antes
-      $InsertarPuja->coche_id = $coche->id;
-      $InsertarPuja->nombre = $nombre; //Porque ya pasamos el $id en el formulario
-      $InsertarPuja->save();
+        $f1 = strtotime($fecha1);
+        $f2 = strtotime($fecha2);
 
-      $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
-      $coche->save();
+        if ($f1 > $f2) {
+          alert()->error('La subasta ya ha terminado, suerte la proxima vez', 'Subasta Cerrada');
+          return redirect('/dashboard');
+        }else{
 
-      //SweetAlert
-      alert()->message('Puja Realizada');
+          if ($precioPuja > $precioFinal) { //Los compara
 
-      $dinero = Pujas::where('coche_id',$id)->get();
+            $InsertarPuja = new Pujas;    //nueva puja en la bbdd
+            $InsertarPuja->cantidad = $puja->precio; //Lo mismo que $precioPuja = $puja->precio;
+            $InsertarPuja->user_id = $user_id; // La variable donde sacamos el user_id antes
+            $InsertarPuja->coche_id = $coche->id;
+            $InsertarPuja->nombre = $nombre; //Porque ya pasamos el $id en el formulario
+            $InsertarPuja->save();
 
-      return back()->withInput();
+            $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
+            $coche->save();
 
-    }else{
-      //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
-      alert()->warning('La puja es muy baja', 'Puja Baja');
-      return back();
-    }
+            //SweetAlert
+            alert()->message('Puja Realizada');
+
+            $dinero = Pujas::where('coche_id',$id)->get();
+
+            return back()->withInput();
+
+          }else{
+            //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
+            alert()->warning('La ultima puja es mayor a la tuya', 'Puja Baja');
+            return back();
+          }
+        }
   }
 
   //Funcion ver para ver detalles de los coches
@@ -206,4 +222,87 @@ public function modificaCoche(Request $datos,$id){
     return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero, 'nombre' => $nombre]);
   }
 
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //USUARIOS
+
+  //CRUD
+
+  public function Usuarios(){
+    $todosuser = User::all();
+    return view("Usuarios",['usuarios' => $todosuser]);
+  }
+
+
+  public function crearUsuario(Request $datos){
+    $user = new User;
+
+    $user->name=$datos->name;
+    $user->email=$datos->email;
+    $user->password=$datos->password;
+    $user->rol=$datos->rol;
+
+    $user->save();
+
+  //SweetAlert
+  alert()->success('Listo para el inicio de sesión', '¡Usuario creado!');
+
+  $todosuser = User::all();
+  return view("Usuarios",['usuarios' => $todosuser]);
+  }
+
+  public function borrarUsuario($id){
+
+    $user = User::find($id);
+
+
+    if ($user != null) {
+      $user->delete();
+      $todosuser = User::all();
+
+  //SweetAlert
+    alert()->error('Usuario borrao con exito', 'Borrado');
+
+  }else{
+    $todosuser = User::all();
+  }
+
+    return view("Usuarios",['usuarios' => $todosuser]);
+
+  }
+
+  public function listadoUsuarios($id){
+
+      $user = User::find($id);
+
+    return view("modificaUsuarios",['Usuarios' => $user]);
+  }
+
+  public function modificaUsuario(Request $datos,$id){
+
+    $user = User::find($id);
+
+    $user->name=$datos->name;
+    $user->email=$datos->email;
+    $user->password=$user->password;
+
+    $user->save();
+
+    //SweetAlert
+    alert()->success('Modificado con exito', '¡Usuario Modificado!');
+
+    $todosuser = User::all();
+
+    return redirect("/Usuarios");
+  }
 }
