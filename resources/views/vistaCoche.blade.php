@@ -62,12 +62,20 @@
 		   	</div>
  		</div>
 
-		<div class="container">
-			<form class="" action="/pujar/{{ $coches->id }}" method="get">
-				<label class="form-label">Precio:</label>
-				<input type="text" class="form-control" name="precio" value="{{$coches->precioFinal}}">
-				<button type="submit" name="button">Pujar</button>
-			</form>
+		<div class="container my-3">
+				<form class="" action="/pujar/{{ $coches->id }}" method="get">
+					<div class="row">
+						<label class="form-label">Precio:</label>
+					</div>
+					<div class="row">
+						<div class="col">
+							<input type="text" class="form-control" name="precio" value="{{$coches->precioFinal}}">
+						</div>
+						<div class="col">
+							<button class="btn btn-danger" type="submit" name="button">Pujar</button>
+						</div>
+					</div>
+				</form>
 		</div>
 <br>
 		<div class="container">

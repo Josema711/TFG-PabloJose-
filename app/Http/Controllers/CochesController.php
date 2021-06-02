@@ -154,7 +154,6 @@ public function modificaCoche(Request $datos,$id){
 		$precioPuja = $puja->precio; //saca el precio que ha pujado el cliente
     $user_id = auth()->user()->id;
     $nombre = auth()->user()->name;
-    $respuesta;
 
     if ($precioPuja > $precioInicial) { //Los compara
 
@@ -170,7 +169,7 @@ public function modificaCoche(Request $datos,$id){
 
       $dinero = Pujas::where('coche_id',$id)->get();
 
-      return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero]);
+      return back()->withInput();
 
     }else{
       //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
