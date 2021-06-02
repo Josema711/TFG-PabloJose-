@@ -7,6 +7,7 @@ use App\Models\coches;
 use App\Models\pujas;
 use App\Http\Controllers\CochesController;
 use Illuminate\Support\Facades\Auth;
+use SweetAlert;
 
 class CochesController extends Controller
 {
@@ -61,6 +62,10 @@ public function insertaCoche(Request $datos){
 
   $coche->save();
 
+//SweetAlert
+alert()->success('No ha habido ningun problema', '¡Subasta Añañdida!');
+
+
 return redirect('/dashboard');
 }
 
@@ -80,6 +85,10 @@ public function borrarCoche($id){
   if ($coche != null) {
     $coche->delete();
     $todosCoches = Coches::all();
+
+//SweetAlert
+  alert()->error('Subasta ya no esta disponible para los clientes', 'Subasta Borrada');
+
 }else{
   $todosCoches = Coches::all();
 }
@@ -107,6 +116,9 @@ public function modificaCoche(Request $datos,$id){
   $coche->tiempo=$datos->tiempo;
 
   $coche->save();
+
+  //SweetAlert
+  alert()->success('Modificado con exito', '¡Subasta Modificada!');
 
   $todosCoches = Coches::all();
 
@@ -154,8 +166,9 @@ public function modificaCoche(Request $datos,$id){
 		$precioPuja = $puja->precio; //saca el precio que ha pujado el cliente
     $user_id = auth()->user()->id;
     $nombre = auth()->user()->name;
+    $precioFinal = $coche->precioFinal;
 
-    if ($precioPuja > $precioInicial) { //Los compara
+    if ($precioPuja > $precioFinal) { //Los compara
 
       $InsertarPuja = new Pujas;    //nueva puja en la bbdd
       $InsertarPuja->cantidad = $puja->precio; //Lo mismo que $precioPuja = $puja->precio;
@@ -167,12 +180,17 @@ public function modificaCoche(Request $datos,$id){
       $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
       $coche->save();
 
+      //SweetAlert
+      alert()->message('Puja Realizada');
+
       $dinero = Pujas::where('coche_id',$id)->get();
 
       return back()->withInput();
 
     }else{
       //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
+      alert()->warning('La puja es muy baja', 'Puja Baja');
+      return back();
     }
   }
 

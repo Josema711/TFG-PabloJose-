@@ -8,6 +8,8 @@
 
 
 			<link href="/css/bootstrap.min.css" rel="stylesheet">
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
+
 
 				</head>
 			  	<body>
@@ -41,7 +43,7 @@
 
 	  </head>
 	  <body>
-
+@include('sweet::alert')
 	<header>
 	  <div class="collapse bg-dark" id="navbarHeader">
 	    <div class="container">
@@ -105,7 +107,6 @@
 	<script src="/js/jquery-3.5.1.min.js" type="text/javascript"></script>
   <script src="/js/popper.min.js" type="text/javascript"></script>
 	<script src="/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/date.js" type="text/javascript"></script>
 
 
   </body>
