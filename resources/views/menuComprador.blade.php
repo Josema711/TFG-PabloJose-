@@ -42,9 +42,12 @@
 </div>
 
 
-<div class="container-fluid justify-content-center my-5">
+<div class="container-fluid justify-content-center my-5 me-5">
   <nav class="navbar navbar-dark bg-dark">
   <form class="container-fluid justify-content-center">
+
+    <a class="btn btn-dark btn-responsive ms-5" href="{{ url('/MiPerfil') }}" role="button">Usuario</a>
+<p style="color:rgba(#000000, 0);" opacity>Espacio suficiente para que este al principio del todo</p>
     <div class="dropdown" role="group">
 <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
 Coches en subasta
@@ -93,8 +96,8 @@ Coches en subasta
   </form>
 </li>
 </ul>
-</div>
 
+</div>
 </nav>
 </div>
 
@@ -108,13 +111,7 @@ Coches en subasta
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-																							preserveAspectRatio="xMidYMid slice" focusable="false">
-										<title>Placeholder</title>
-										<rect width="100%" height="100%" fill="#000000"/>
-										<text x="50%" y="50%" fill="#eceeef" dy=".3em">Coches</text>
-						</svg>
-
+            <img src="{{asset('img/productos/'.$coche->foto)}}" class="card-img-top" width="100%" fill="#000000" alt="Imagen coche">
     			<div class="card-body">
 						<h5 class="card-title">{{ $coche->marca }} {{ $coche->modelo }}</h5>
               <p class="card-text">
@@ -132,8 +129,28 @@ Coches en subasta
 		 				 							<input type="submit" value="Ver">
 		 				 						</form>
                 </div>
-                <small class="text-muted">9 mins</small>
 
+                <?php
+                $fecha1 = date('y-m-d'); // Fecha de hoy, es lo mismo que:  date("d/m/Y")
+                $fecha2 = $coche->tiempo;
+
+                    $f1 = strtotime($fecha1);
+                    $f2 = strtotime($fecha2);
+
+                    $segundos = $f2 - $f1; //Son el numero de segundos que hay entre las dos fechas
+                    $dias = $segundos/(3600*24); //Lo divido por los segundos que tiene una hora, por las 24 horas del dia
+                    $dias = round($dias); //La division puede no ser exacta, redondeo.
+
+
+
+                if ($f1 < $f2){
+                  $res = "check.png";
+                } else{
+                   $res = "cross.png";
+                }
+
+                 ?>
+                <small class="text-muted"><img src="{{asset('img/'.$res)}}" alt=""></small>
               </div>
             </div>
           </div>

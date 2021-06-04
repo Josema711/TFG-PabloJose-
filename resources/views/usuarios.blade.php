@@ -28,12 +28,12 @@
               <td class="email">{{$user->email}}</td>
               <td>
                 <form action="/listadoUsuarios/{{ $user->id }}" method="get">
-                  <input type="submit" value="Edit">
+                  <input type="submit" class="btn btn-outline-dark" value="Edit">
                 </form>
               </td>
               <td>
                 <form action="/borrarUsuario/{{ $user->id }}" method="get">
-                  <input type="submit" value="Borrar">
+                  <input type="submit" class="btn btn-outline-dark" value="Borrar">
                 </form>
               </td>
             </tr>

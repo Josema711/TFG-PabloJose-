@@ -21,6 +21,7 @@ class CochesSeeder extends Seeder
        'precio'=>'80.000',
        'tipo'=>'Coupe',
        'tiempo' => date('2021-07-02'),
+       'foto'=>'',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'M8',
@@ -29,6 +30,7 @@ class CochesSeeder extends Seeder
         'precio'=>'190.000',
         'tipo'=>'Deportivo',
         'tiempo' => date('2021-06-20'),
+        'foto'=>'',
             ]);
           DB::table('coches')->insert([
         'modelo'=> 'Urus',
@@ -37,6 +39,7 @@ class CochesSeeder extends Seeder
         'precio'=>'280.000',
         'tipo'=>'SUV',
         'tiempo' => date('2021-06-23'),
+        'foto'=>'',
             ]);
     }
 }

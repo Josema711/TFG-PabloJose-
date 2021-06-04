@@ -18,7 +18,7 @@
 
 <div class="row" style="margin-bottom:20%; margin-right:10%; margin-left:10%;">
 	<div class="imagen col-7 align-self-center">
-		<img src="{{asset('img/slide_1.jpg')}}" style="width:70%;" class="img-thumbnail" alt="{{ $coches->marca }} {{ $coches->modelo }}">
+		<img src="{{asset('img/productos/'.$coches->foto)}}" style="width:70%;" class="img-thumbnail" alt="{{ $coches->marca }} {{ $coches->modelo }}">
 	</div>
 	<div class="text col-5 align-self-center">
 			<p>Se trata de un <b>{{ $coches->tipo }}</b> ni mas ni menos, con un precio inicial de <b>{{ $coches->precio }} €</b>

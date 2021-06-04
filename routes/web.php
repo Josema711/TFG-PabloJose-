@@ -42,7 +42,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/dashboard',[CochesController::class,'listado']);
 
 //Ruta para insdertar un dato en la base de datos
-Route::get('/insertaCoche',[CochesController::class,'insertaCoche']);
+Route::post('/insertaCoche',[CochesController::class,'insertaCoche']);
 
 //Ruta para borrar un registro de la base de datos
 Route::get('/borrarCoche/{id}',[CochesController::class,'borrarCoche']);
@@ -73,6 +73,9 @@ Route::get('/pujar/{id}',[CochesController::class,'pujar']);
 //Usuarios
 
 Route::get('/Usuarios', [CochesController::class,'Usuarios']);
+
+Route::get('/MiPerfil', [CochesController::class,'miPerfil']);
+Route::get('/nuevaContraseña',[CochesController::class,'nuevaContraseña']);
 
 Route::get('/newUser', function() {
     return view('crearUsuario');

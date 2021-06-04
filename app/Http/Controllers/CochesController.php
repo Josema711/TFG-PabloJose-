@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Http\Controllers\CochesController;
 use Illuminate\Support\Facades\Auth;
 use SweetAlert;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class CochesController extends Controller
 {
@@ -51,20 +53,31 @@ public function volver(Request $request){
 return redirect('/dashboard');
 }
 
-public function insertaCoche(Request $datos){
+public function insertaCoche(Request $request){
+  $file = $request->file('imagen');
+
+  //Generate a file name with extension
+  $fileName = time().".".$file->getClientOriginalExtension();
+
+  //Destino
+  $destino = public_path('img/productos');
+  $request->imagen->move($destino, $fileName);
+
   $coche = new Coches;
 
-  $coche->marca=$datos->marca;
-  $coche->modelo=$datos->modelo;
-  $coche->cv=$datos->cv;
-  $coche->precio=$datos->precio;
-  $coche->tipo=$datos->tipo;
-  $coche->tiempo=$datos->tiempo;
+  $coche->foto=$fileName;
+
+  $coche->marca=$request->marca;
+  $coche->modelo=$request->modelo;
+  $coche->cv=$request->cv;
+  $coche->precio=$request->precio;
+  $coche->tipo=$request->tipo;
+  $coche->tiempo=$request->tiempo;
 
   $coche->save();
 
 //SweetAlert
-alert()->success('No ha habido ningun problema', '¡Subasta Añañdida!');
+alert()->success('No ha habido ningun problema', '¡Subasta Añadida!');
 
 
 return redirect('/dashboard');
@@ -117,6 +130,8 @@ public function modificaCoche(Request $datos,$id){
   $coche->precio=$datos->precio;
   $coche->tipo=$datos->tipo;
   $coche->tiempo=$datos->tiempo;
+
+  $coche->foto=$coche->foto;
 
   $coche->save();
 
@@ -193,6 +208,7 @@ public function modificaCoche(Request $datos,$id){
             $InsertarPuja->save();
 
             $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
+            $coche->user_id=auth()->user()->id;
             $coche->save();
 
             //SweetAlert
@@ -304,5 +320,33 @@ public function modificaCoche(Request $datos,$id){
     $todosuser = User::all();
 
     return redirect("/Usuarios");
+  }
+
+  public function miPerfil(){
+
+    $user_id = auth()->user()->id;
+
+    $user = User::find($user_id);
+
+    return view("miPerfil",['user' => $user]);
+  }
+
+  public function nuevaContraseña(Request $datos){
+    $user_id = auth()->user()->id;
+
+    $user = User::find($user_id);
+
+    $user->name=$user->name;
+    $user->email=$user->email;
+
+    if ($user->password != $datos->password) {
+      $user->password=$datos->password;
+        $user->save();
+        alert()->success('Ya tienes contraseña nueva', 'Todo bien');
+        return back();
+    }else{
+      alert()->warning('La contraseña nueva tiene que ser diferente', 'Error');
+        return back();
+    }
   }
 }

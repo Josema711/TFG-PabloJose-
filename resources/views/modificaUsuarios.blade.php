@@ -13,7 +13,7 @@
 
 <div class="border border-start"  style="padding:2em; border-radius:25px; background:#b4b4b4; box-shadow:-8px -8px 16px #b3a3a3, 8px 8px 16px #000000;">
 
-    <h3>Modificar Usuarios</h3>
+    <h3>Modificar Usuario</h3>
 
       <form action="/modificaUsuario/{{ $Usuarios->id }}" method="get">
 

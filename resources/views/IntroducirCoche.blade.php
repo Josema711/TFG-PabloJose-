@@ -15,8 +15,8 @@
 
     <h3>Añadir Subasta</h3>
 
-      <form action="insertaCoche" method="get">
-
+      <form action="insertaCoche" method="post" enctype="multipart/form-data">
+					{{csrf_field()}}
 			        <div class="row">
 
 								<div class="col-md-6">
@@ -59,6 +59,10 @@
 								<div class="col">
 									<label class="form-label">Fecha De Finalizacion:</label>
 									<input type="date" class="form-control" name="tiempo" value="tiempo">
+								</div>
+								<div class="col">
+									<label class="form-label">Foto:</label>
+									<input type="file" name="imagen">
 								</div>
 							</div>
 

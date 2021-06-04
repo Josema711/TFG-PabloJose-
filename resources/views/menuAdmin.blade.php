@@ -112,13 +112,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-																							preserveAspectRatio="xMidYMid slice" focusable="false">
-										<title>Placeholder</title>
-										<rect width="100%" height="100%" fill="#000000"/>
-										<text x="50%" y="50%" fill="#eceeef" dy=".3em">Coches</text>
-						</svg>
-
+            <img src="{{asset('img/productos/'.$coche->foto)}}" class="card-img-top" width="100%" fill="#000000" alt="Imagen coche">
     			<div class="card-body">
 						<h5 class="card-title">{{ $coche->marca }} {{ $coche->modelo }}</h5>
               <p class="card-text">
@@ -145,7 +139,29 @@
 		 				 						</form>
                 </div>
 
-                <!-- <small class="text-muted">Aqui podemos poner si la subasta esta activa o no creadno un campo nuevo en la base de datos si nos da tiempo</small> -->
+
+                <?php
+              	$fecha1 = date('y-m-d'); // Fecha de hoy, es lo mismo que:  date("d/m/Y")
+              	$fecha2 = $coche->tiempo;
+
+              			$f1 = strtotime($fecha1);
+              			$f2 = strtotime($fecha2);
+
+              			$segundos = $f2 - $f1; //Son el numero de segundos que hay entre las dos fechas
+              			$dias = $segundos/(3600*24); //Lo divido por los segundos que tiene una hora, por las 24 horas del dia
+              			$dias = round($dias); //La division puede no ser exacta, redondeo.
+
+
+
+              	if ($f1 < $f2){
+                  $res = "check.png";
+              	} else{
+                   $res = "cross.png";
+              	}
+
+              	 ?>
+                <small class="text-muted"><img src="{{asset('img/'.$res)}}" alt=""></small>
+
               </div>
             </div>
           </div>
