@@ -200,6 +200,13 @@ public function modificaCoche(Request $datos,$id){
 
           if ($precioPuja > $precioFinal) { //Los compara
 
+            if ($coche->user_id == $user_id) { //para que no puje el mismo
+
+              alert()->warning('La puja mas alta es la tuya', '¡¡Tranquilo!!');
+              return back();
+
+            }else{
+
             $InsertarPuja = new Pujas;    //nueva puja en la bbdd
             $InsertarPuja->cantidad = $puja->precio; //Lo mismo que $precioPuja = $puja->precio;
             $InsertarPuja->user_id = $user_id; // La variable donde sacamos el user_id antes
@@ -207,8 +214,8 @@ public function modificaCoche(Request $datos,$id){
             $InsertarPuja->nombre = $nombre; //Porque ya pasamos el $id en el formulario
             $InsertarPuja->save();
 
-            $coche->precioFinal=$puja->precio; //$precioPuja es $puja->precio;
-            $coche->user_id=auth()->user()->id;
+            $coche->precioFinal = $puja->precio; //$precioPuja es $puja->precio;
+            $coche->user_id = auth()->user()->id;
             $coche->save();
 
             //SweetAlert
@@ -218,9 +225,11 @@ public function modificaCoche(Request $datos,$id){
 
             return back()->withInput();
 
+            }
+
           }else{
             //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
-            alert()->warning('La ultima puja es mayor a la tuya', 'Puja Baja');
+            alert()->warning('La ultima puja es mayor a la tuya', 'Puja insuficiente');
             return back();
           }
         }

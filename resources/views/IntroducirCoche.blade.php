@@ -35,11 +35,11 @@
 
 								<div class="col-md-3 col-sm-3 col-xs-3">
 									<label class="form-label">Precio:</label>
-				          <input type="text" class="form-control" name="precio" placeholder="€">
+				          <input type="number" class="form-control" name="precio" placeholder="€">
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-3">
 									<label class="form-label">CV:</label>
-				          <input type="text" class="form-control" name="cv">
+				          <input type="number" class="form-control" name="cv">
 								</div>
 								<div class="col">
 									<label class="form-label">Tipo de Coche:</label>

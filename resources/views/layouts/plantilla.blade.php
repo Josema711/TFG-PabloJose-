@@ -40,7 +40,6 @@
 	      }
 	    </style>
 
-
 	  </head>
 	  <body>
 @include('sweet::alert')
@@ -97,9 +96,12 @@
    	    </form>
 
 				<footer class="bg-light text-center text-lg-start">
-				  <!-- Copyright hay que crear el nuestro con lo de CommonRights-->
+				  <!-- Copyright hay que crear el nuestro con lo de CreativeCommons-->
 				  <div class="text-center p-3" style="background-color: #000000;">
-				   <p class="text-light">© 2020 Copyright: <a class="text-light" href="#"> KEUKEGEN.com</a></p>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+							<p class="text-light"><i>@CreativeCommons</i></p>
+						</a>
+
 				  </div>
 				</footer>
 

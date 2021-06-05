@@ -69,7 +69,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" name="precio" value="{{$coches->precioFinal}}">
+							<input type="number" class="form-control" name="precio" value="{{$coches->precioFinal}}">
 						</div>
 						<div class="col">
 							<button class="btn btn-danger" type="submit" name="button">Pujar</button>
