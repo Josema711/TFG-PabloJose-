@@ -1,6 +1,8 @@
 @extends('layouts.plantilla')
 @section('contenido')
 
+
+
 <form action="/volver" method="get">
 	<button type="submit" class="btn btn-outline-dark btn-xs mx-2 my-2">
 	  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
@@ -21,7 +23,8 @@
 		<img src="{{asset('img/productos/'.$coches->foto)}}" style="width:70%;" class="img-thumbnail" alt="{{ $coches->marca }} {{ $coches->modelo }}">
 	</div>
 	<div class="text col-5 align-self-center">
-			<p>Se trata de un <b>{{ $coches->tipo }}</b> ni mas ni menos, con un precio inicial de <b>{{ $coches->precio }} €</b>
+			<p>Se trata de un <b>{{ $coches->marca }}</b> ni mas ni menos, el vehiculo esta en un estado impecable, con todos los controles mecanicos necesarios para saber que este {{$coches->tipo}} esta a la altura, chasis y carroceria de ¡10!
+				 con un precio inicial de <b>{{ $coches->precio }} €</b>
 			 tiene una potencia de <b>{{ $coches->cv }}</b> caballos, un autentico cochazo. No te lo pierdas, puja y que gane el que mas dinero tenga.</p>
 	</div>
 
@@ -44,7 +47,7 @@
 	  $res = "La subasta termina hoy";
 	} else{
 		  if ($dias == '1') {
-		  	$res = "La subasta termina en mañana.";
+		  	$res = "La subasta termina mañana.";
 		  }else{
 				$res = "La subasta termina en ".$dias." dias.";
 			}
@@ -86,8 +89,6 @@
 			</div>
 			@endforeach
 		</div>
-
-
 
 </div>
 

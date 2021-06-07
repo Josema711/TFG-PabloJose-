@@ -21,15 +21,15 @@
 
 								<div class="col-md-4">
 									<label class="form-label">Nombre:</label>
-				          <input type="text" class="form-control" name="name">
+				          <input type="text" class="form-control" name="name" required>
 								</div>
 								<div class="col-md-4">
 									<label class="form-label">Correo:</label>
-				          <input type="email" class="form-control" name="email">
+				          <input type="email" class="form-control" name="email" required>
 								</div>
                 <div class="col-md-4">
 									<label class="form-label">Contraseña:</label>
-				          <input type="password" class="form-control" name="password">
+				          <input type="password" class="form-control" name="password" required>
 								</div>
                 <div class="col-md-4" hidden>
 									<label class="form-label">Rol:</label>

@@ -155,7 +155,9 @@
 
               	if ($f1 < $f2){
                   $res = "check.png";
-              	} else{
+              	} else if ($f1 == $f2) {
+                  $res = "almost.png";
+                }else{
                    $res = "cross.png";
               	}
 

@@ -143,11 +143,13 @@ Coches en subasta
 
 
 
-                if ($f1 < $f2){
-                  $res = "check.png";
-                } else{
-                   $res = "cross.png";
-                }
+                    if ($f1 < $f2){
+                      $res = "check.png";
+                  	} else if ($f1 == $f2) {
+                      $res = "almost.png";
+                    }else{
+                       $res = "cross.png";
+                  	}
 
                  ?>
                 <small class="text-muted"><img src="{{asset('img/'.$res)}}" alt=""></small>

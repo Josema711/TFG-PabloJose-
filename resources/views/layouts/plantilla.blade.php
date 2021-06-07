@@ -95,7 +95,9 @@
 
    	    </form>
 
-				<footer class="bg-light text-center text-lg-start">
+				<footer class="bg-light text-center text-lg-start " style="width: 100%;
+  margin: 0 auto;
+  position: relative;">
 				  <!-- Copyright hay que crear el nuestro con lo de CreativeCommons-->
 				  <div class="text-center p-3" style="background-color: #000000;">
 						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">

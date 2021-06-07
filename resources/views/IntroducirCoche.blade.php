@@ -19,11 +19,11 @@
 					{{csrf_field()}}
 			        <div class="row">
 
-								<div class="col-md-6">
+								<div class="col-6">
 									<label class="form-label">Marca:</label>
 				          <input type="text" class="form-control" name="marca">
 								</div>
-								<div class="col-md-6">
+								<div class="col-6">
 									<label class="form-label">Modelo:</label>
 				          <input type="text" class="form-control" name="modelo">
 								</div>
@@ -33,11 +33,11 @@
 
 							<div class="row">
 
-								<div class="col-md-3 col-sm-3 col-xs-3">
+								<div class="col-3">
 									<label class="form-label">Precio:</label>
 				          <input type="number" class="form-control" name="precio" placeholder="€">
 								</div>
-								<div class="col-md-3 col-sm-3 col-xs-3">
+								<div class="col-3">
 									<label class="form-label">CV:</label>
 				          <input type="number" class="form-control" name="cv">
 								</div>
@@ -56,13 +56,13 @@
 							</div>
 
 							<div class="row">
-								<div class="col">
+								<div class="col-12">
 									<label class="form-label">Fecha De Finalizacion:</label>
 									<input type="date" class="form-control" name="tiempo" value="tiempo">
 								</div>
-								<div class="col">
-									<label class="form-label">Foto:</label>
-									<input type="file" name="imagen">
+								<div class="col-12">
+									<label for="formFile" class="form-label">Foto:</label>
+									<input class="form-control" type="file" name="imagen">
 								</div>
 							</div>
 

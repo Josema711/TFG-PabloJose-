@@ -198,7 +198,7 @@ public function modificaCoche(Request $datos,$id){
           return redirect('/dashboard');
         }else{
 
-          if ($precioPuja > $precioFinal) { //Los compara
+          if ($precioPuja > $precioFinal && $precioPuja > $precioInicial) { //Los compara
 
             if ($coche->user_id == $user_id) { //para que no puje el mismo
 
@@ -229,7 +229,7 @@ public function modificaCoche(Request $datos,$id){
 
           }else{
             //Rellenar con el else el error. y conseguir que salga el nombre del que ha apostado
-            alert()->warning('La ultima puja es mayor a la tuya', 'Puja insuficiente');
+            alert()->warning('Rascate un poco mas el bolsillo', 'Puja baja');
             return back();
           }
         }
