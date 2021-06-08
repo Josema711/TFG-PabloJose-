@@ -242,6 +242,22 @@ public function modificaCoche(Request $datos,$id){
       $nombre = auth()->user()->name;
       $user_id = auth()->user()->id;
 
+      //Si no existe una puja no existe user_id, por lo que aqui se hace la compornbacion y si no existe pues no muestra nada de ganador ni nada de eso
+
+        if (isset($coche->user_id)) {
+          $user_id_ganador=$coche->user_id;
+          $puja_con_user_id=Pujas::find($user_id_ganador);
+
+              if (isset($puja_con_user_id->nombre)) {
+                $nombreGanador =$puja_con_user_id->nombre; //$puja_con_user_id->nombre;
+
+                $dinero = Pujas::where('coche_id',$id)->get();
+
+                return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero, 'nombre' => $nombre, 'ganador' => $nombreGanador]);
+              }
+        }
+
+
       $dinero = Pujas::where('coche_id',$id)->get();
 
     return view("vistaCoche",['coches' => $coche, 'apuestas' => $dinero, 'nombre' => $nombre]);
@@ -345,17 +361,27 @@ public function modificaCoche(Request $datos,$id){
 
     $user = User::find($user_id);
 
-    $user->name=$user->name;
-    $user->email=$user->email;
+    if (isset($datos->password)) {
+      $user->name=$datos->name;
+      $user->email=$datos->email;
 
-    if ($user->password != $datos->password) {
-      $user->password=$datos->password;
-        $user->save();
-        alert()->success('Ya tienes contraseña nueva', 'Todo bien');
-        return back();
+      if ($user->password != $datos->password) {
+        $user->password=$datos->password;
+          $user->save();
+          alert()->success('Ya se ha modificado tu usuario', 'Todo bien');
+          return back();
+      }else{
+        alert()->warning('La contraseña nueva tiene que ser diferente', 'Error');
+          return back();
+      }
     }else{
-      alert()->warning('La contraseña nueva tiene que ser diferente', 'Error');
-        return back();
+          $user->name=$datos->name;
+          $user->email=$datos->email;
+          $user->password=$user->password;
+      return back();
     }
+
+
+
   }
 }

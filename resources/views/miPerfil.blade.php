@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-6">
               <label class="form-label">Contraseña:</label>
-              <input type="text" class="form-control" name="password" >
+              <input type="password" class="form-control" name="password" >
             </div>
 
           </div>

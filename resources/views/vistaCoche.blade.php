@@ -64,7 +64,7 @@
 				 	{{$res}}
 		   	</div>
  		</div>
-
+@if($f1 < $f2)
 		<div class="container my-3">
 				<form class="" action="/pujar/{{ $coches->id }}" method="get">
 					<div class="row">
@@ -89,6 +89,31 @@
 			</div>
 			@endforeach
 		</div>
+@endif
+
+<!-- Ganador -->
+@if($f1 > $f2)
+
+@if(isset($ganador))
+		<div class="container">
+					<div class="alert alert-success" role="alert">
+					  <h4 class="alert-heading">Enhorabuena {{$ganador}}!</h4>
+					  <p>Tu puja ha sido la mas alta por lo que el coche es tuyo, ponte en contacto con nosotros para realizar los tramites.</p>
+					  <hr>
+					  <p class="mb-0">{{ $coches->marca }} {{ $coches->modelo }}</p>
+					</div>
+		</div>
+		@else
+		<div class="container">
+					<div class="alert alert-success" role="alert">
+						<h4 class="alert-heading">Puja cerrada sin comprador!</h4>
+						<p>Esta puja se repetira proximamente ya que no se ha comprado el articulo</p>
+						<hr>
+						<p class="mb-0">{{ $coches->marca }} {{ $coches->modelo }}</p>
+					</div>
+		</div>
+	@endif
+@endif
 
 </div>
 
