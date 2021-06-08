@@ -64,7 +64,7 @@
 				 	{{$res}}
 		   	</div>
  		</div>
-@if($f1 < $f2)
+@if($f1 <= $f2)
 		<div class="container my-3">
 				<form class="" action="/pujar/{{ $coches->id }}" method="get">
 					<div class="row">
