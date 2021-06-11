@@ -244,11 +244,19 @@ public function modificaCoche(Request $datos,$id){
 
       //Si no existe una puja no existe user_id, por lo que aqui se hace la compornbacion y si no existe pues no muestra nada de ganador ni nada de eso
 
-        if (isset($coche->user_id)) {
+
+      $user_id_ganador=$coche->user_id;
+      $puja_con_user_id=Pujas::find($user_id_ganador);
+
+        $user_id_coche = $coche->user_id;
+
+        if (isset($user_id_coche)) {
           $user_id_ganador=$coche->user_id;
           $puja_con_user_id=Pujas::find($user_id_ganador);
 
-              if (isset($puja_con_user_id->nombre)) {
+          $nombrePuja = $puja_con_user_id->nombre;
+
+              if (is_string($nombrePuja)) {
                 $nombreGanador =$puja_con_user_id->nombre; //$puja_con_user_id->nombre;
 
                 $dinero = Pujas::where('coche_id',$id)->get();
@@ -362,13 +370,13 @@ public function modificaCoche(Request $datos,$id){
     $user = User::find($user_id);
 
     if (isset($datos->password)) {
-      $user->name=$datos->name;
-      $user->email=$datos->email;
-
       if ($user->password != $datos->password) {
+        $user->name=$datos->name;
+        $user->email=$datos->email;
         $user->password=$datos->password;
+
           $user->save();
-          alert()->success('Ya se ha modificado tu usuario', 'Todo bien');
+          alert()->success('Ya se ha modificado tu usuario y contraseña', 'Todo bien');
           return back();
       }else{
         alert()->warning('La contraseña nueva tiene que ser diferente', 'Error');
@@ -378,6 +386,8 @@ public function modificaCoche(Request $datos,$id){
           $user->name=$datos->name;
           $user->email=$datos->email;
           $user->password=$user->password;
+            alert()->success('Ya se ha modificado tu usuario', 'Todo bien');
+          $user->save();
       return back();
     }
 

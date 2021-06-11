@@ -86,6 +86,7 @@
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 				<strong>¡Nueva Puja!</strong> Realizada por <strong>{{$pujas->nombre}}</strong> con un valor de <strong>{{$pujas->cantidad}} €</strong>.
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				{{$ganador}}
 			</div>
 			@endforeach
 		</div>
