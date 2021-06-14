@@ -10,7 +10,8 @@ use App\Http\Controllers\CochesController;
 use Illuminate\Support\Facades\Auth;
 use SweetAlert;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File;
+//use Illuminate\Http\File;
 
 class CochesController extends Controller
 {
@@ -99,8 +100,18 @@ public function borrarCoche($id){
 
 
   if ($coche != null) {
-    $coche->delete();
+
     $todosCoches = Coches::all();
+    $fotoCoche = $coche->foto;
+
+      //Borra la imagen
+        unlink(public_path('img/productos/'.$fotoCoche));
+        $coche->delete();
+
+
+    // $path = public_path('img/productos'.$fotoCoche);
+    // Storage::delete($path);
+
 
 //SweetAlert
   alert()->error('Subasta ya no esta disponible para los clientes', 'Subasta Borrada');
